@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova Spin Casino | Social Sweeps</title>
+    <style>
+        :root { 
+            --bg-main: #060814; 
+            --panel-gold: #ffcc00; 
+            --neon-blue: #00f0ff; 
+            --neon-magenta: #ff007f; 
+            --text-white: #ffffff; 
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Arial Black', Gadget, sans-serif; }
+        body { background-color: var(--bg-main); color: var(--text-white); padding-bottom: 90px; }
+        
+        /* Premium Sweepstakes App Header */
+        header { 
+            background: linear-gradient(180deg, #101430 0%, #060814 100%); 
+            padding: 15px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            border-bottom: 3px solid var(--panel-gold); 
+            box-shadow: 0 0 20px rgba(255, 204, 0, 0.4); 
+            position: sticky; top: 0; z-index: 100; 
+        }
+        .logo { font-size: 1.4rem; color: var(--panel-gold); text-shadow: 0 0 10px rgba(255, 204, 0, 0.8); letter-spacing: 1px; text-transform: uppercase; }
+        
+        /* High-Vibrancy Balance Displays linking to your Airtable */
+        .wallet { display: flex; gap: 12px; }
+        .coin-box { background: #000000; padding: 6px 15px; border-radius: 20px; font-size: 0.9rem; font-weight: bold; border: 2px solid var(--neon-blue); display: flex; align-items: center; gap: 6px; box-shadow: 0 0 8px rgba(0, 240, 255, 0.3); }
+        .coin-box.gc { border-color: var(--panel-gold); color: var(--panel-gold); box-shadow: 0 0 8px rgba(255, 204, 0, 0.3); }
+        .coin-box.sc { border-color: var(--neon-magenta); color: var(--neon-magenta); box-shadow: 0 0 8px rgba(255, 0, 127, 0.3); }
+        
+        /* Promo Banner: \$25 Sign-On Bonus Notice */
+        .promo-banner {
+            background: linear-gradient(90deg, #ff007f 0%, #7b00ff 100%);
+            color: #fff;
+            padding: 12px;
+            text-align: center;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 10px rgba(255, 0, 127, 0.3);
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+        .promo-highlight {
+            color: var(--panel-gold);
+            font-weight: bold;
+            text-shadow: 0 0 8px rgba(255, 204, 0, 0.8);
+        }
+
+        /* Interactive Jackpot Counter Banner */
+        .ticker-bar { background: #111636; padding: 8px; text-align: center; font-size: 1.1rem; text-transform: uppercase; border-bottom: 2px solid var(--panel-gold); }
+        .jackpot-val { color: var(--neon-blue); font-size: 1.2rem; text-shadow: 0 0 8px rgba(0, 240, 255, 0.6); }
+
+        .container { max-width: 1200px; margin: 25px auto; padding: 0 15px; }
+        .menu-title { font-size: 1.3rem; margin-bottom: 15px; color: var(--neon-blue); text-transform: uppercase; letter-spacing: 1px; }
+        
+        /* 4-Column High-End Game Grid */
+        .lobby-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+        @media (min-width: 768px) { .lobby-grid { grid-template-columns: repeat(4, 1fr); } }
+        
+        .game-wrapper { background: #111636; border-radius: 14px; overflow: hidden; border: 2px solid #202b66; position: relative; transition: transform 0.2s, border-color 0.2s; cursor: pointer; aspect-ratio: 1 / 1; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
+        .game-wrapper:hover { transform: scale(1.04); border-color: var(--panel-gold); box-shadow: 0 0 15px rgba(255, 204, 0, 0.4); }
+        
+        /* Vibrant Graphic Slots Placeholders */
+        .game-banner { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+        .banner-1 { background: radial-gradient(circle, #ff3300 0%, #3a0000 100%); }
+        .banner-2 { background: radial-gradient(circle, #0044ff 0%, #000c3a 100%); }
+        .banner-3 { background: radial-gradient(circle, #cc00ff 0%, #2a003a 100%); }
+        .banner-4 { background: radial-gradient(circle, #00ff66 0%, #002a0a 100%); }
+        
+        .game-name { position: absolute; bottom: 0; width: 100%; background: rgba(0, 0, 0, 0.85); padding: 10px 5px; text-align: center; font-size: 0.85rem; text-transform: uppercase; border-top: 1px solid rgba(255,255,255,0.1); color: #fff; }
+
+        /* Fixed Navigation Tab Bar */
+        .footer-bar { position: fixed; bottom: 0; left: 0; width: 100%; background-color: #0b0f26; display: flex; justify-content: space-around; align-items: center; padding: 12px 0; border-top: 2px solid var(--neon-blue); z-index: 100; }
+        .footer-btn { background: none; border: none; color: var(--text-white); font-size: 0.85rem; text-transform: uppercase; font-weight: bold; cursor: pointer; }
+        .action-buy { background: linear-gradient(180deg, #fff07c 0%, #ffbb00 100%); color: #000; padding: 8px 24px; border-radius: 20px; box-shadow: 0 4px 10px rgba(255, 204, 0, 0.4); }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">NOVA SPIN</div>
+        <div class="wallet">
+            <div class="coin-box gc">GC: <span id="gc-balance">Loading...</span></div>
+            <div class="coin-box sc">SC: <span id="sc-balance">Loading...</span></div>
+        </div>
+    </header>
+
+    <!-- Legally Compliant \$25 Welcome Package Promotional Banner -->
+    <div class="promo-banner">
+        🎉 WELCOME BONUS: REGISTER TODAY FOR <span class="promo-highlight">\$25 FREE PLAY</span> COIN BALANCE! 🎉
+    </div>
+
+    <div class="ticker-bar">GLOBAL PROGRESSIVE JACKPOT: <span class="jackpot-val">\$1,842,905.10</span></div>
+
+    <div class="container">
+        <h2 class="menu-title">Featured Titles</h2>
+        <div class="lobby-grid">
+            <div class="game-wrapper"><div class="game-banner banner-1">🦁</div><div class="game-name">Wild Safari</div></div>
+            <div class="game-wrapper"><div class="game-banner banner-2">⚡</div><div class="game-name">Volt Strike</div></div>
+            <div class="game-wrapper"><div class="game-banner banner-3">🔮</div><div class="game-name">Mystic Fortune</div></div>
+            <div class="game-wrapper"><div class="game-banner banner-4">🎰</div><div class="game-name">Neon Fruit Blast</div></div>
+        </div>
+    </div>
+
+    <div class="footer-bar">
+        <button class="footer-btn">Lobby</button>
+        <button class="footer-btn action-buy">Store</button>
+        <button class="footer-btn">Account</button>
+    </div>
+
+    <script>
+        // Automatic synchronization bridge targeting your test user profile
+        const testEmail = 'jehancho1234@gmail.com'; 
+
+        async function fetchBalances() {
+            try {
+                const response = await fetch(`/api/player/${testEmail}`);
+                const data = await response.json();
+                if(!data.error) {
+                    document.getElementById('gc-balance').innerText = Number(data.goldCoins).toLocaleString();
+                    document.getElementById('sc-balance').innerText = Number(data.sweepCoins).toFixed(2);
+                } else {
+                    document.getElementById('gc-balance').innerText = 'No User';
+                    document.getElementById('sc-balance').innerText = 'No User';
+                }
+            } catch (err) {
+                document.getElementById('gc-balance').innerText = 'Error';
+                document.getElementById('sc-balance').innerText = 'Error';
+            }
+        }
+        window.onload = fetchBalances;
+    </script>
+</body>
+</html>
