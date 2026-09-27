@@ -3,87 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Honcho's Entertainment | Social Sweeps</title>
+    <title>Honcho's Entertainment | Premium Sweeps Portal</title>
     <style>
         :root { 
-            --bg-main: #020208; 
-            --panel-gold: #ffcc00; 
+            --bg-deep: #030511; 
+            --gold-glow: #ffd700;
             --neon-blue: #00f0ff; 
-            --neon-magenta: #ff007f; 
-            --text-white: #ffffff; 
-            --card-bg: #0d1127;
+            --neon-pink: #ff007f; 
+            --card-border: rgba(255, 255, 255, 0.08);
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Arial Black', Gadget, sans-serif; }
-        body { background-color: var(--bg-main); color: var(--text-white); padding-bottom: 95px; background-image: radial-gradient(circle at center, #0c1033 0%, #020208 100%); background-attachment: fixed; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Montserrat', 'Arial Black', sans-serif; }
         
-        /* Premium Sweepstakes App Header */
+        body { 
+            background-color: var(--bg-deep); 
+            color: #ffffff; 
+            padding-bottom: 100px; 
+            background-image: 
+                radial-gradient(circle at 50% 0%, #141938 0%, transparent 50%),
+                radial-gradient(circle at 0% 100%, #0d0a21 0%, transparent 40%);
+            background-attachment: fixed;
+            overflow-x: hidden;
+        }
+        
+        /* Premium Sleek Top Navigation Header */
         header { 
-            background: linear-gradient(180deg, #161c44 0%, #090d22 100%); 
-            padding: 12px 15px; 
+            background: linear-gradient(180deg, rgba(16, 22, 54, 0.95) 0%, rgba(6, 8, 20, 0.98) 100%); 
+            backdrop-filter: blur(10px);
+            padding: 14px 20px; 
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
-            border-bottom: 3px solid var(--panel-gold); 
-            box-shadow: 0 4px 20px rgba(255, 204, 0, 0.35); 
+            border-bottom: 2px solid var(--gold-glow); 
+            box-shadow: 0 4px 25px rgba(255, 215, 0, 0.25); 
             position: sticky; top: 0; z-index: 100; 
         }
-        .logo { font-size: 1.1rem; color: var(--panel-gold); text-shadow: 0 0 12px rgba(255, 204, 0, 0.8); letter-spacing: 1px; text-transform: uppercase; }
+        .logo { font-size: 1.2rem; font-weight: 900; color: var(--gold-glow); text-shadow: 0 0 15px rgba(255, 215, 0, 0.6); letter-spacing: 1.5px; text-transform: uppercase; }
         
-        /* High-Vibrancy Balance Displays linking to your Airtable */
-        .wallet { display: flex; gap: 8px; }
-        .coin-box { background: linear-gradient(180deg, #000000 0%, #111111 100%); padding: 6px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; border: 2px solid var(--neon-blue); display: flex; align-items: center; gap: 5px; box-shadow: 0 0 10px rgba(0, 240, 255, 0.2); }
-        .coin-box.gc { border-color: var(--panel-gold); color: var(--panel-gold); box-shadow: 0 0 10px rgba(255, 204, 0, 0.2); }
-        .coin-box.sc { border-color: var(--neon-magenta); color: var(--neon-magenta); box-shadow: 0 0 10px rgba(255, 0, 127, 0.2); }
+        /* High-Gloss Currency Balance Plates */
+        .wallet { display: flex; gap: 10px; }
+        .coin-box { 
+            background: linear-gradient(135deg, #02040a 0%, #0f1322 100%); 
+            padding: 6px 14px; 
+            border-radius: 30px; 
+            font-size: 0.8rem; 
+            font-weight: 800; 
+            border: 1.5px solid var(--neon-blue); 
+            display: flex; 
+            align-items: center; 
+            gap: 6px; 
+            box-shadow: inset 0 0 8px rgba(0, 240, 255, 0.2), 0 0 10px rgba(0, 240, 255, 0.1); 
+        }
+        .coin-box.gc { border-color: var(--gold-glow); color: var(--gold-glow); box-shadow: inset 0 0 8px rgba(255, 215, 0, 0.2), 0 0 10px rgba(255, 215, 0, 0.1); }
+        .coin-box.sc { border-color: var(--neon-pink); color: var(--neon-pink); box-shadow: inset 0 0 8px rgba(255, 0, 127, 0.2), 0 0 10px rgba(255, 0, 127, 0.1); }
         
-        /* Promo Banner: \$25 Sign-On Bonus Notice */
+        /* Dynamic Flashing Welcome Offer Strip */
         .promo-banner {
-            background: linear-gradient(90deg, #ff007f 0%, #b000ff 50%, #ff007f 100%);
+            background: linear-gradient(90deg, #ff0055 0%, #6e00ff 50%, #ff0055 100%);
+            background-size: 200% auto;
+            animation: gradientShift 4s linear infinite;
             color: #fff;
             padding: 10px;
             text-align: center;
             font-size: 0.85rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 4px 15px rgba(255, 0, 127, 0.4);
-            border-bottom: 1px solid rgba(255,255,255,0.2);
+            letter-spacing: 1.5px;
+            box-shadow: 0 4px 20px rgba(255, 0, 85, 0.4);
             font-weight: 900;
+            border-bottom: 1px solid rgba(255,255,255,0.15);
         }
-        .promo-highlight {
-            color: var(--panel-gold);
-            text-shadow: 0 0 8px rgba(255, 204, 0, 0.9);
-        }
+        .promo-highlight { color: var(--gold-glow); text-shadow: 0 0 8px rgba(255, 215, 0, 0.9); }
 
-        /* Interactive Jackpot Counter Banner */
-        .ticker-bar { background: rgba(0, 0, 0, 0.6); padding: 8px; text-align: center; font-size: 1rem; text-transform: uppercase; border-bottom: 1px solid rgba(255, 204, 0, 0.3); font-weight: bold; letter-spacing: 0.5px; }
-        .jackpot-val { color: var(--neon-blue); font-size: 1.1rem; text-shadow: 0 0 10px rgba(0, 240, 255, 0.7); font-weight: 900; }
+        @keyframes gradientShift { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }
 
-        .container { max-width: 1200px; margin: 20px auto; padding: 0 12px; }
-        .menu-title { font-size: 1.1rem; margin-bottom: 15px; color: var(--neon-blue); text-transform: uppercase; letter-spacing: 1px; text-shadow: 0 0 5px rgba(0, 240, 255, 0.4); }
+        .ticker-bar { background: rgba(0, 0, 0, 0.4); padding: 8px; text-align: center; font-size: 0.9rem; text-transform: uppercase; border-bottom: 1px solid rgba(255, 255, 255, 0.05); letter-spacing: 1px; color: #a0a5c0; }
+        .jackpot-val { color: var(--neon-blue); font-weight: 900; text-shadow: 0 0 12px rgba(0, 240, 255, 0.6); }
+
+        .container { max-width: 1200px; margin: 25px auto; padding: 0 16px; }
+        .menu-title { font-size: 1.1rem; font-weight: 800; margin-bottom: 20px; color: var(--neon-blue); text-transform: uppercase; letter-spacing: 1.5px; text-shadow: 0 0 8px rgba(0, 240, 255, 0.3); }
         
-        /* Premium App Grid Layout */
-        .lobby-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+        /* Main Lobby 4-Column Presentation Grid */
+        .lobby-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
         @media (min-width: 768px) { .lobby-grid { grid-template-columns: repeat(4, 1fr); } }
         
-        /* High-End Glossy App Cards (Like Chumba/MilkyWay) */
-        .game-wrapper { background-color: var(--card-bg); border-radius: 12px; overflow: hidden; border: 2px solid #202b66; position: relative; transition: transform 0.15s ease, border-color 0.15s ease; cursor: pointer; aspect-ratio: 1 / 1; box-shadow: 0 8px 16px rgba(0,0,0,0.6); display: flex; flex-direction: column; }
-        .game-wrapper:hover { transform: scale(1.03); border-color: var(--panel-gold); box-shadow: 0 0 15px rgba(255, 204, 0, 0.4); }
+        /* Modern 3D Premium Glass Cabinets (No more emojis / kitty layouts) */
+        .game-wrapper { 
+            background: linear-gradient(135deg, #0d122e 0%, #060817 100%); 
+            border-radius: 16px; 
+            overflow: hidden; 
+            border: 1px solid var(--card-border); 
+            position: relative; 
+            transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1); 
+            cursor: pointer; 
+            aspect-ratio: 4 / 5; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5); 
+            display: flex;
+            flex-direction: column;
+        }
         
-        /* Card Artwork Graphics Simulation Wrapper */
-        .game-banner { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 2.8rem; position: relative; }
-        .banner-1 { background: linear-gradient(135deg, #ff512f 0%, #dd2476 100%); }
-        .banner-2 { background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%); }
-        .banner-3 { background: linear-gradient(135deg, #f80759 0%, #bc4e9c 100%); }
-        .banner-4 { background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); }
+        /* Animated neon tracking borders on interaction */
+        .game-wrapper::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            border-radius: 16px; box-shadow: inset 0 0 0 2px transparent; transition: all 0.25s ease; pointer-events: none; z-index: 5;
+        }
+        .game-wrapper:hover { 
+            transform: translateY(-6px) scale(1.02); 
+            box-shadow: 0 15px 30px rgba(0, 240, 255, 0.15);
+        }
+        .game-wrapper:hover::before { box-shadow: inset 0 0 0 2px var(--neon-blue); }
+        .game-wrapper.featured:hover::before { box-shadow: inset 0 0 0 2px var(--gold-glow); }
         
-        /* Glossy overlay effect found in premium apps */
-        .game-banner::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 50%; background: linear-gradient(rgba(255,255,255,0.15), rgba(255,255,255,0)); pointer-events: none; }
+        /* Premium High-End Graphic Panels */
+        .game-banner { 
+            width: 100%; height: 100%; background-size: cover; background-position: center; position: relative; 
+            display: flex; align-items: center; justify-content: center;
+        }
         
-        .game-name { position: absolute; bottom: 0; width: 100%; background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.95) 40%); padding: 12px 5px 8px 5px; text-align: center; font-size: 0.8rem; text-transform: uppercase; color: #fff; letter-spacing: 0.5px; font-weight: 900; }
+        /* Seamless High-End Premium Background Art Replacements */
+        .banner-1 { background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(6,8,23,0.95)), url('https://unsplash.com'); }
+        .banner-2 { background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(6,8,23,0.95)), url('https://unsplash.com'); }
+        .banner-3 { background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(6,8,23,0.95)), url('https://unsplash.com'); }
+        .banner-4 { background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(6,8,23,0.95)), url('https://unsplash.com'); }
+        
+        /* High-gloss luxury light shine over the artwork */
+        .game-banner::after { 
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+            background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0) 50%); pointer-events: none; 
+        }
+        
+        /* Clean Sleek Typography Block */
+        .game-info { position: absolute; bottom: 0; width: 100%; padding: 15px 10px; text-align: center; z-index: 4; }
+        .game-tag { font-size: 0.6rem; text-transform: uppercase; color: var(--neon-blue); letter-spacing: 2px; margin-bottom: 4px; font-weight: 800; }
+        .game-wrapper.featured .game-tag { color: var(--gold-glow); }
+        .game-name { font-size: 0.85rem; font-weight: 900; text-transform: uppercase; color: #ffffff; letter-spacing: 0.5px; }
 
-        /* Fixed Navigation Tab Bar */
-        .footer-bar { position: fixed; bottom: 0; left: 0; width: 100%; background: linear-gradient(180deg, #090d22 0%, #040612 100%); display: flex; justify-content: space-around; align-items: center; padding: 12px 0; border-top: 2px solid var(--neon-blue); z-index: 100; box-shadow: 0 -4px 15px rgba(0,0,0,0.5); }
-        .footer-btn { background: none; border: none; color: var(--text-white); font-size: 0.8rem; text-transform: uppercase; font-weight: bold; cursor: pointer; letter-spacing: 0.5px; }
-        .action-buy { background: linear-gradient(180deg, #fff385 0%, #ffaa00 100%); color: #000; padding: 8px 24px; border-radius: 20px; box-shadow: 0 4px 12px rgba(255, 204, 0, 0.5); font-weight: 900; }
+        /* Modern Bottom Utility Dock Bar */
+        .footer-bar { 
+            position: fixed; bottom: 0; left: 0; width: 100%; 
+            background: linear-gradient(180deg, rgba(13, 17, 43, 0.95) 0%, rgba(4, 6, 18, 0.98) 100%); 
+            backdrop-filter: blur(12px);
+            display: flex; justify-content: space-around; align-items: center; padding: 14px 0; 
+            border-top: 1px solid rgba(255,255,255,0.05); z-index: 100; box-shadow: 0 -10px 30px rgba(0,0,0,0.6); 
+        }
+        .footer-btn { background: none; border: none; color: #a0a5c0; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; cursor: pointer; letter-spacing: 1px; transition: color 0.2s; }
+        .footer-btn.active, .footer-btn:hover { color: #ffffff; }
+        .action-buy { 
+            background: linear-gradient(135deg, #ffd700 0%, #ffa500 100%); 
+            color: #000000; padding: 10px 28px; border-radius: 30px; 
+            box-shadow: 0 4px 15px rgba(255, 165, 0, 0.4); font-weight: 900; font-size: 0.8rem;
+            border: none; transition: transform 0.1s;
+        }
+        .action-buy:active { transform: scale(0.96); }
     </style>
 </head>
 <body>
@@ -96,54 +165,15 @@
         </div>
     </header>
 
-    <!-- Legally Compliant Welcome Package Promotional Banner -->
     <div class="promo-banner">
-        🎉 WELCOME BONUS: REGISTER TODAY FOR <span class="promo-highlight">\$25 FREE PLAY</span> COIN BALANCE! 🎉
+        🚀 PLAYER WELCOME: REGISTER NOW & UNLOCK YOUR <span class="promo-highlight">\$25 FREE PLAY</span> BALANCE 🚀
     </div>
 
-    <div class="ticker-bar">GLOBAL PROGRESSIVE JACKPOT: <span class="jackpot-val">\$1,842,905.10</span></div>
+    <div class="ticker-bar">LIVE PROGRESSIVE JACKPOT: <span class="jackpot-val">\$1,842,905.10</span></div>
 
     <div class="container">
-        <h2 class="menu-title">Featured Slots</h2>
+        <h2 class="menu-title">Premium Games</h2>
         <div class="lobby-grid">
-            <div class="game-wrapper" onclick="openSlot()"><div class="game-banner banner-1">🦁</div><div class="game-name">Wild Safari</div></div>
-            <div class="game-wrapper" onclick="openSlot()"><div class="game-banner banner-2">⚡</div><div class="game-name">Volt Strike</div></div>
-            <div class="game-wrapper" onclick="openSlot()"><div class="game-banner banner-3">🔮</div><div class="game-name">Mystic Fortune</div></div>
-            <div class="game-wrapper" onclick="openSlot()"><div class="game-banner banner-4">🎰</div><div class="game-name">Neon Fruit Blast</div></div>
-        </div>
-    </div>
-
-    <div class="footer-bar">
-        <button class="footer-btn">Lobby</button>
-        <button class="footer-btn action-buy">Store</button>
-        <button class="footer-btn">Account</button>
-    </div>
-
-    <script>
-        const testEmail = 'jehancho1234@gmail.com'; 
-
-        // Clicking ANY game wrapper card now opens your active slot screen file
-        function openSlot() {
-            window.location.href = 'slot.html';
-        }
-
-        async function fetchBalances() {
-            try {
-                const response = await fetch(`/api/player/${testEmail}`);
-                const data = await response.json();
-                if(!data.error) {
-                    document.getElementById('gc-balance').innerText = Number(data.goldCoins).toLocaleString();
-                    document.getElementById('sc-balance').innerText = Number(data.sweepCoins).toFixed(2);
-                } else {
-                    document.getElementById('gc-balance').innerText = 'No User';
-                    document.getElementById('sc-balance').innerText = 'No User';
-                }
-            } catch (err) {
-                document.getElementById('gc-balance').innerText = 'Error';
-                document.getElementById('sc-balance').innerText = 'Error';
-            }
-        }
-        window.onload = fetchBalances;
-    </script>
-</body>
-</html>
+            <div class="game-wrapper featured" onclick="openSlot()"><div class="game-banner banner-1"></div><div class="game-info"><div class="game-tag">Featured Slot</div><div class="game-name">Wild Safari</div></div></div>
+            <div class="game-wrapper" onclick="openSlot()"><div class="game-banner banner-2"></div><div class="game-info"><div class="game-tag">Slots</div><div class="game-name">Volt Strike</div></div></div>
+            <div class="game-wrapper" onclick="openSlot()"><div class="game-banner banner-3"></div><div class="game-info"><div class="game-tag">Jackpot</div><div class="game-name">Mystic Fortune</div></div></div>
